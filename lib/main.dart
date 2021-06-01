@@ -1,4 +1,4 @@
-import 'package:erc_app/ui/screens/home_screen.dart';
+import 'package:erc_app/ui/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: "/",
       routes: {
-        '/': (ctx) => HomeScreen(),
+        '/': (ctx) => MainScreen(),
       },
     );
   }
