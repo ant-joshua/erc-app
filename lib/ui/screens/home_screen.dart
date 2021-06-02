@@ -1,7 +1,9 @@
+import 'package:erc_app/core/models/menu.dart';
 import 'package:flutter/material.dart';
 // import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 // ignore: use_key_in_widget_constructors
 class HomeScreen extends StatefulWidget {
@@ -19,11 +21,19 @@ class _HomeScreenState extends State<HomeScreen> {
     'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
   ];
 
-  final List<String> _menuList = [
-    "Sermon",
-    "Join Cool",
-    "Seat Booking",
-    "All Menu"
+  final List<HomeMenu> _menuList = [
+    HomeMenu(name: 'Sermon', image: "assets/icons/sermon.svg"),
+    HomeMenu(name: 'Join Cool', image: "assets/icons/cool.svg"),
+    HomeMenu(name: 'Seat Booking', image: "assets/icons/booking.svg"),
+    HomeMenu(name: 'All Menu', image: "assets/icons/all_menu.svg")
+    // {"name": "Sermon"},
+    // {"name": "Join Cool"},
+    // {"name": "Seat Booking"},
+    // {"name": "All Menu"}
+    // // "Sermon",
+    // "Join Cool",
+    // "Seat Booking",
+    // "All Menu"
   ];
 
   @override
@@ -65,7 +75,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   .toList(),
             ),
           ),
-          const Text("testing"),
           SizedBox(
             width: width,
             child: Card(
@@ -74,16 +83,31 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Wrap(
                   crossAxisAlignment: WrapCrossAlignment.center,
                   alignment: WrapAlignment.spaceBetween,
-                  runAlignment: WrapAlignment.spaceBetween,
+                  // runAlignment: WrapAlignment.spaceBetween,
                   children: [
                     ..._menuList
                         .map(
                           (value) => InkWell(
-                            child: Padding(
-                              padding: const EdgeInsets.all(12.0),
+                            child: Expanded(
                               child: Column(
                                 children: [
-                                  Text(value),
+                                  (value.image != null)
+                                      ? Container(
+                                          height: 50,
+                                          constraints: const BoxConstraints(
+                                            maxHeight: 100,
+                                            maxWidth: 80,
+                                            minWidth: 50,
+                                            minHeight: 50,
+                                          ),
+                                          padding: const EdgeInsets.all(2.0),
+                                          child: SvgPicture.asset(
+                                            value.image ?? '',
+                                            fit: BoxFit.contain,
+                                          ),
+                                        )
+                                      : const SizedBox(),
+                                  Text(value.name),
                                 ],
                               ),
                             ),
