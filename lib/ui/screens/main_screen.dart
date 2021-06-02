@@ -1,6 +1,6 @@
-import 'package:erc_app/ui/screens/account_screen.dart';
+import 'package:erc_app/ui/screens/profile/account_screen.dart';
 import 'package:erc_app/ui/screens/giving_screen.dart';
-import 'package:erc_app/ui/screens/home_screen.dart';
+import 'package:erc_app/ui/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 // ignore: use_key_in_widget_constructors
