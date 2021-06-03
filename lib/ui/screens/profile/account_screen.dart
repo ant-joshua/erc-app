@@ -5,10 +5,15 @@ class AccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       width: 200,
       height: 200,
-      child: Text("testing"),
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/login');
+        },
+        child: const Text("Mantul"),
+      ),
     );
   }
 }
