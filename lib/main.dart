@@ -1,4 +1,5 @@
 import 'package:erc_app/ui/screens/auth/login_screen.dart';
+import 'package:erc_app/ui/screens/auth/register_screen.dart';
 import 'package:erc_app/ui/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:erc_app/core/constants/color.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/": (ctx) => MainScreen(),
         "/login": (ctx) => const LoginScreen(),
+        "/register": (ctx) => const RegisterScreen()
       },
     );
   }

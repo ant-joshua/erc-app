@@ -3,14 +3,14 @@ import 'package:erc_app/ui/widgets/components/custom_text_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 8),
                 child: Text(
-                  "Login",
+                  "Register",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -85,14 +85,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: ElevatedButton(
                     onPressed: () {},
                     child: const Text(
-                      "Login",
+                      "Register",
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
               ),
               const AlreadyHaveAnAccount(
-                login: true,
+                login: false,
               )
             ],
           ),
