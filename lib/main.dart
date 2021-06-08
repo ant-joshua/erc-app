@@ -4,7 +4,10 @@ import 'package:erc_app/ui/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:erc_app/core/constants/color.dart';
 
+import 'package:erc_app/core/di/injector_provider.dart';
+
 void main() {
+  setupInjector();
   runApp(const MyApp());
 }
 
