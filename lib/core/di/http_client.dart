@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:erc_app/core/helpers/storage.helpers.dart';
+import 'package:erc_app/core/services/http_service.dart';
 
-class HttpClient {
+class HttpClient extends HttpService {
   final Dio? _client = Dio();
 
   HttpClient() {
@@ -9,7 +10,7 @@ class HttpClient {
   }
 
   Interceptor _interceptor() {
-    return InterceptorsWrapper(onRequest: (options, handlers) async {
+    return InterceptorsWrapper(onRequest: (options, handler) async {
       final storageToken = await StorageHelper.get("Token");
       // final storageToken = await StorageHelper.get(StorageKeys.token);
 
@@ -19,7 +20,12 @@ class HttpClient {
         });
       }
 
-      return handlers.next(options);
+      return handler.next(options);
+    }, onError: (DioError e, handler) {
+      if (e.response!.statusCode == 401) {
+        print(e.message);
+      }
+      return handler.next(e);
     });
   }
 

@@ -1,3 +1,5 @@
+import 'package:erc_app/core/dto/login_request_dto.dart';
+import 'package:erc_app/core/viewmodels/auth_provider.dart';
 import 'package:erc_app/ui/widgets/components/already_have_an_account.dart';
 import 'package:erc_app/ui/widgets/components/custom_text_input.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +21,17 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
     _usernameController.dispose();
     _passwordController.dispose();
+  }
+
+  void login() {
+    if (_usernameController.text.isNotEmpty &&
+        _passwordController.text.isNotEmpty) {
+      LoginRequestDto loginData = LoginRequestDto(
+        username: _usernameController.text,
+        password: _passwordController.text,
+      );
+      AuthProvider.instance(context).login(loginData);
+    }
   }
 
   @override
@@ -83,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: size.width,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => login(),
                     child: const Text(
                       "Login",
                       style: TextStyle(color: Colors.white),
